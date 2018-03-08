@@ -821,6 +821,29 @@
 	crate_type = /obj/structure/closet/crate/secure/plasma
 	dangerous = TRUE
 
+/datum/supply_pack/medical/chemistry_machines
+	name = "Chemistry machines"
+	cost = 10000
+	contains = list(/obj/item/stock_parts/console_screen,
+					/obj/item/stock_parts/console_screen,
+					/obj/item/stock_parts/console_screen,
+					/obj/item/reagent_containers/glass/beaker,
+					/obj/item/reagent_containers/glass/beaker,
+					/obj/item/stock_parts/manipulator/nano,
+					/obj/item/stock_parts/manipulator/nano,
+					/obj/item/stock_parts/matter_bin/adv,
+					/obj/item/stock_parts/matter_bin/adv,
+					/obj/item/stock_parts/capacitor/adv,
+					/obj/item/stock_parts/micro_laser/high,
+					/obj/item/stock_parts/cell/high,
+					/obj/item/circuitboard/machine/chem_dispenser,
+					/obj/item/circuitboard/machine/chem_heater,
+					/obj/item/circuitboard/machine/chem_master,
+					/obj/item/stack/cable_coil,
+					/obj/item/stack/sheet/metal/fifty)
+	crate_type = /obj/structure/closet/crate/secure/science
+	crate_name = "chemistry machines crate"
+
 /datum/supply_pack/medical/bloodpacks
 	name = "Blood Pack Variety Crate"
 	cost = 3500
@@ -915,6 +938,34 @@
 					/obj/item/device/assembly/timer)
 	crate_name = "plasma assembly crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
+
+/datum/supply_pack/science/research_and_development
+	name = "RnD machines"
+	cost = 7000
+	contains = list(/obj/item/reagent_containers/glass/beaker/sulphuric,
+					/obj/item/reagent_containers/glass/beaker,
+					/obj/item/reagent_containers/glass/beaker,
+					/obj/item/reagent_containers/glass/beaker,
+					/obj/item/reagent_containers/glass/beaker,
+					/obj/item/stock_parts/manipulator,
+					/obj/item/stock_parts/manipulator,
+					/obj/item/stock_parts/manipulator,
+					/obj/item/stock_parts/manipulator,
+					/obj/item/stock_parts/matter_bin,
+					/obj/item/stock_parts/matter_bin,
+					/obj/item/stock_parts/matter_bin,
+					/obj/item/stock_parts/scanning_module,
+					/obj/item/stock_parts/micro_laser,
+					/obj/item/circuitboard/computer/rdconsole,
+					/obj/item/circuitboard/machine/destructive_analyzer,
+					/obj/item/circuitboard/machine/protolathe,
+					/obj/item/circuitboard/machine/circuit_imprinter,
+					/obj/item/stack/cable_coil,
+					/obj/item/stack/sheet/metal/fifty,
+					/obj/item/stack/sheet/metal/fifty,
+					/obj/item/stack/sheet/glass/fifty)
+	crate_type = /obj/structure/closet/crate/secure/science
+	crate_name = "RnD machines crate"
 
 /datum/supply_pack/science/shieldwalls
 	name = "Shield Generators"
