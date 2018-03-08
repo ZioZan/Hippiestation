@@ -43,7 +43,7 @@
 
 // Plasma. The oil of 26 century. The reason why you are here.
 /datum/export/material/plasma
-	cost = 300
+	cost = 500
 	k_elasticity = 0
 	material_id = MAT_PLASMA
 	message = "cm3 of plasma"
@@ -74,7 +74,7 @@
 
 // Plastitanium.
 /datum/export/material/plastitanium
-	cost = 550
+	cost = 750
 	material_id = MAT_TITANIUM // code can only check for one material_id; plastitanium is half plasma, half titanium, so ((250 x 250) + (250 x 500)) / 250
 	message = "cm3 of plastitanium"
 
