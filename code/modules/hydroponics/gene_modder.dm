@@ -16,42 +16,22 @@
 
 	var/datum/plant_gene/target
 	var/operation = ""
-	var/max_potency = 50 // See RefreshParts() for how these work
-	var/max_yield = 2
-	var/min_production = 12
-	var/max_endurance = 10 // IMPT: ALSO AFFECTS LIFESPAN
-	var/min_wchance = 67
-	var/min_wrate = 10
+	var/rating = 0
+	var/max_extract_pot = 50
+	// The cap on potency gene extraction.
+	// This number is for T1, each upgraded part adds 5% for a tech level above T1.
+	// At T4, it reaches 95%.
 
-/obj/machinery/plantgenes/RefreshParts() // Comments represent the max you can set per tier, respectively. seeds.dm [219] clamps these for us but we don't want to mislead the viewer.
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		if(M.rating > 3)
-			max_potency = 95
-		else
-			max_potency = initial(max_potency) + (M.rating**3) // 51,58,77,114 	 Clamps at 100
 
-		max_yield = initial(max_yield) + (M.rating*2) // 4,6,8,10 	Clamps at 10
-
-	for(var/obj/item/stock_parts/scanning_module/SM in component_parts)
-		if(SM.rating > 3) //If you create t5 parts I'm a step ahead mwahahaha!
-			min_production = 1
-		else
-			min_production = 10 - (SM.rating * 3) //7,4,1. Requires if to avoid going below clamp [1]
-
-		max_endurance = initial(max_endurance) + (SM.rating * 25) // 35,60,85,110	Clamps at 10min 100max
-
-	for(var/obj/item/stock_parts/micro_laser/ML in component_parts)
-		var/wratemod = ML.rating * 2.5
-		min_wrate = Floor(10-wratemod,1) // 7,5,2,0	Clamps at 0 and 10	You want this low
-		min_wchance = 67-(ML.rating*16) // 48,35,19,3 	Clamps at 0 and 67	You want this low
-	for(var/obj/item/circuitboard/machine/plantgenes/vaultcheck in component_parts)
-		if(istype(vaultcheck, /obj/item/circuitboard/machine/plantgenes/vault)) // DUMB BOTANY TUTS
-			max_potency = 100
-			max_yield = 10
-			min_production = 1
-			max_endurance = 100
-			min_wchance = 0
-			min_wrate = 0
+/obj/machinery/plantgenes/RefreshParts()
+	rating = 0
+	for(var/I in component_parts)
+		if(istype(I, /obj/item/stock_parts))
+			var/obj/item/stock_parts/S = I
+			rating += S.rating-1
+		else if(istype(I, /obj/item/circuitboard/machine/plantgenes/vault))
+			rating += 5 // Having original alien board is +25%
+	max_extract_pot = initial(max_extract_pot) + rating*5
 
 /obj/machinery/plantgenes/update_icon()
 	..()
@@ -136,54 +116,28 @@
 			if("extract")
 				dat += "<span class='highlight'>[target.get_name()]</span> gene from \the <span class='highlight'>[seed]</span>?<br>"
 				dat += "<span class='bad'>The sample will be destroyed in process!</span>"
-				if(istype(target, /datum/plant_gene/core))
+				if(istype(target, /datum/plant_gene/core/potency))
 					var/datum/plant_gene/core/gene = target
-					if(istype(target, /datum/plant_gene/core/potency))
-						if(gene.value > max_potency)
-							dat += "<br><br>This device's extraction capabilities are currently limited to <span class='highlight'>[max_potency]</span> potency. "
-							dat += "Target gene will be degraded to <span class='highlight'>[max_potency]</span> potency on extraction."
-					else if(istype(target, /datum/plant_gene/core/lifespan))
-						if(gene.value > max_endurance)
-							dat += "<br><br>This device's extraction capabilities are currently limited to <span class='highlight'>[max_endurance]</span> lifespan. "
-							dat += "Target gene will be degraded to <span class='highlight'>[max_endurance]</span> Lifespan on extraction."
-					else if(istype(target, /datum/plant_gene/core/endurance))
-						if(gene.value > max_endurance)
-							dat += "<br><br>This device's extraction capabilities are currently limited to <span class='highlight'>[max_endurance]</span> endurance. "
-							dat += "Target gene will be degraded to <span class='highlight'>[max_endurance]</span> endurance on extraction."
-					else if(istype(target, /datum/plant_gene/core/yield))
-						if(gene.value > max_yield)
-							dat += "<br><br>This device's extraction capabilities are currently limited to <span class='highlight'>[max_yield]</span> yield. "
-							dat += "Target gene will be degraded to <span class='highlight'>[max_yield]</span> yield on extraction."
-					else if(istype(target, /datum/plant_gene/core/production))
-						if(gene.value < min_production)
-							dat += "<br><br>This device's extraction capabilities are currently limited to <span class='highlight'>[min_production]</span> production. "
-							dat += "Target gene will be degraded to <span class='highlight'>[min_production]</span> production on extraction."
-					else if(istype(target, /datum/plant_gene/core/weed_rate))
-						if(gene.value < min_wrate)
-							dat += "<br><br>This device's extraction capabilities are currently limited to <span class='highlight'>[min_wrate]</span> weed rate. "
-							dat += "Target gene will be degraded to <span class='highlight'>[min_wrate]</span> weed rate on extraction."
-					else if(istype(target, /datum/plant_gene/core/weed_chance))
-						if(gene.value < min_wchance)
-							dat += "<br><br>This device's extraction capabilities are currently limited to <span class='highlight'>[min_wchance]</span> weed chance. "
-							dat += "Target gene will be degraded to <span class='highlight'>[min_wchance]</span> weed chance on extraction."
-
+					if(gene.value > max_extract_pot)
+						dat += "<br><br>This device's extraction capabilities are currently limited to [max_extract_pot] potency. "
+						dat += "Target gene will be degraded to [max_extract_pot] potency on extraction."
 			if("replace")
 				dat += "<span class='highlight'>[target.get_name()]</span> gene with <span class='highlight'>[disk.gene.get_name()]</span>?<br>"
 			if("insert")
 				dat += "<span class='highlight'>[disk.gene.get_name()]</span> gene into \the <span class='highlight'>[seed]</span>?<br>"
-		dat += "</div><div class='line'><a href='?src=[REF(src)];gene=[REF(target)];op=[operation]'>Confirm</a> "
-		dat += "<a href='?src=[REF(src)];abort=1'>Abort</a></div>"
+		dat += "</div><div class='line'><a href='?src=\ref[src];gene=\ref[target];op=[operation]'>Confirm</a> "
+		dat += "<a href='?src=\ref[src];abort=1'>Abort</a></div>"
 		popup.set_content(dat)
 		popup.open()
 		return
 
 	dat+= "<div class='statusDisplay'>"
 
-	dat += "<div class='line'><div class='statusLabel'>Plant Sample:</div><div class='statusValue'><a href='?src=[REF(src)];eject_seed=1'>"
+	dat += "<div class='line'><div class='statusLabel'>Plant Sample:</div><div class='statusValue'><a href='?src=\ref[src];eject_seed=1'>"
 	dat += seed ? seed.name : "None"
 	dat += "</a></div></div>"
 
-	dat += "<div class='line'><div class='statusLabel'>Data Disk:</div><div class='statusValue'><a href='?src=[REF(src)];eject_disk=1'>"
+	dat += "<div class='line'><div class='statusLabel'>Data Disk:</div><div class='statusValue'><a href='?src=\ref[src];eject_disk=1'>"
 	if(!disk)
 		dat += "None"
 	else if(!disk.gene)
@@ -207,9 +161,9 @@
 				continue
 			dat += "<tr><td width='260px'>[G.get_name()]</td><td>"
 			if(can_extract)
-				dat += "<a href='?src=[REF(src)];gene=[REF(G)];op=extract'>Extract</a>"
+				dat += "<a href='?src=\ref[src];gene=\ref[G];op=extract'>Extract</a>"
 			if(can_insert && istype(disk.gene, G.type))
-				dat += "<a href='?src=[REF(src)];gene=[REF(G)];op=replace'>Replace</a>"
+				dat += "<a href='?src=\ref[src];gene=\ref[G];op=replace'>Replace</a>"
 			dat += "</td></tr>"
 		dat += "</table></div>"
 
@@ -221,15 +175,15 @@
 					var/datum/plant_gene/G = a
 					dat += "<tr><td width='260px'>[G.get_name()]</td><td>"
 					if(can_extract)
-						dat += "<a href='?src=[REF(src)];gene=[REF(G)];op=extract'>Extract</a>"
-					dat += "<a href='?src=[REF(src)];gene=[REF(G)];op=remove'>Remove</a>"
+						dat += "<a href='?src=\ref[src];gene=\ref[G];op=extract'>Extract</a>"
+					dat += "<a href='?src=\ref[src];gene=\ref[G];op=remove'>Remove</a>"
 					dat += "</td></tr>"
 				dat += "</table>"
 			else
 				dat += "No content-related genes detected in sample.<br>"
 			dat += "</div>"
 			if(can_insert && istype(disk.gene, /datum/plant_gene/reagent))
-				dat += "<a href='?src=[REF(src)];op=insert'>Insert: [disk.gene.get_name()]</a>"
+				dat += "<a href='?src=\ref[src];op=insert'>Insert: [disk.gene.get_name()]</a>"
 
 			dat += "<div class='line'><h3>Trait Genes</h3></div><div class='statusDisplay'>"
 			if(trait_genes.len)
@@ -238,14 +192,14 @@
 					var/datum/plant_gene/G = a
 					dat += "<tr><td width='260px'>[G.get_name()]</td><td>"
 					if(can_extract)
-						dat += "<a href='?src=[REF(src)];gene=[REF(G)];op=extract'>Extract</a>"
-					dat += "<a href='?src=[REF(src)];gene=[REF(G)];op=remove'>Remove</a>"
+						dat += "<a href='?src=\ref[src];gene=\ref[G];op=extract'>Extract</a>"
+					dat += "<a href='?src=\ref[src];gene=\ref[G];op=remove'>Remove</a>"
 					dat += "</td></tr>"
 				dat += "</table>"
 			else
 				dat += "No trait-related genes detected in sample.<br>"
 			if(can_insert && istype(disk.gene, /datum/plant_gene/trait))
-				dat += "<a href='?src=[REF(src)];op=insert'>Insert: [disk.gene.get_name()]</a>"
+				dat += "<a href='?src=\ref[src];op=insert'>Insert: [disk.gene.get_name()]</a>"
 			dat += "</div>"
 	else
 		dat += "<br>No sample found.<br><span class='highlight'>Please, insert a plant sample to use this device.</span>"
@@ -320,22 +274,9 @@
 				if("extract")
 					if(disk && !disk.read_only)
 						disk.gene = G
-						if(istype(G, /datum/plant_gene/core))
+						if(istype(G, /datum/plant_gene/core/potency))
 							var/datum/plant_gene/core/gene = G
-							if(istype(G, /datum/plant_gene/core/potency))
-								gene.value = min(gene.value, max_potency)
-							else if(istype(G, /datum/plant_gene/core/lifespan))
-								gene.value = min(gene.value, max_endurance) //INTENDED
-							else if(istype(G, /datum/plant_gene/core/endurance))
-								gene.value = min(gene.value, max_endurance)
-							else if(istype(G, /datum/plant_gene/core/production))
-								gene.value = max(gene.value, min_production)
-							else if(istype(G, /datum/plant_gene/core/yield))
-								gene.value = min(gene.value, max_yield)
-							else if(istype(G, /datum/plant_gene/core/weed_rate))
-								gene.value = max(gene.value, min_wrate)
-							else if(istype(G, /datum/plant_gene/core/weed_chance))
-								gene.value = max(gene.value, min_wchance)
+							gene.value = min(gene.value, max_extract_pot)
 						disk.update_name()
 						qdel(seed)
 						seed = null
@@ -354,7 +295,6 @@
 							seed.reagents_from_genes()
 						disk.gene.apply_vars(seed)
 						repaint_seed()
-
 
 			update_genes()
 			operation = ""
@@ -393,7 +333,6 @@
 
 		for(var/datum/plant_gene/reagent/G in seed.genes)
 			reagent_genes += G
-
 		for(var/datum/plant_gene/trait/G in seed.genes)
 			trait_genes += G
 
@@ -422,11 +361,13 @@
 	var/read_only = 0 //Well, it's still a floppy disk
 	unique_rename = 1
 
-/obj/item/disk/plantgene/Initialize()
-	. = ..()
+
+/obj/item/disk/plantgene/New()
+	..()
 	add_overlay("datadisk_gene")
 	src.pixel_x = rand(-5, 5)
 	src.pixel_y = rand(-5, 5)
+
 
 /obj/item/disk/plantgene/proc/update_name()
 	if(gene)
