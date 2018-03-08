@@ -11,7 +11,7 @@
 	force = 15
 	throwforce = 10
 	var/burst_time = 30
-	var/fieldlimit = 4
+	var/fieldlimit = 6
 	var/list/fields = list()
 	var/quick_burst_mod = 0.8
 	origin_tech = "magnets=3;engineering=3"
@@ -22,7 +22,7 @@
 	icon_state = "resonator_u"
 	item_state = "resonator_u"
 	origin_tech = "materials=4;powerstorage=3;engineering=3;magnets=3"
-	fieldlimit = 6
+	fieldlimit = 8
 	quick_burst_mod = 1
 
 /obj/item/resonator/attack_self(mob/user)

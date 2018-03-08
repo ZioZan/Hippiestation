@@ -12,7 +12,7 @@
 	can_flashlight = 1
 	flight_x_offset = 15
 	flight_y_offset = 9
-	var/overheat_time = 16
+	var/overheat_time = 12
 	var/holds_charge = FALSE
 	var/unique_frequency = FALSE // modified by KA modkits
 	var/overheat = FALSE

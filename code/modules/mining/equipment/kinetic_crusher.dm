@@ -24,7 +24,7 @@
 	sharpness = IS_SHARP
 	var/list/trophies = list()
 	var/charged = TRUE
-	var/charge_time = 15
+	var/charge_time = 10
 
 /obj/item/twohanded/required/kinetic_crusher/Destroy()
 	QDEL_LIST(trophies)
