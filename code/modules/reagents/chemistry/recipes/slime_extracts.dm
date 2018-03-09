@@ -64,6 +64,21 @@
 	required_container = /obj/item/slime_extract/green
 	mix_message = "<span class='info'>The mixture rapidly expands and contracts, its appearance shifting into a sickening green.</span>"
 
+/datum/chemical_reaction/slime/slimemutate_unstable/on_reaction(datum/reagents/holder)
+	..()
+
+/datum/chemical_reaction/slime/slimeuran
+	name = "Slime Uranium"
+	id = "m_uran"
+	required_reagents = list("mutagen" = 1)
+	required_container = /obj/item/slime_extract/green
+	required_other = 1
+
+/datum/chemical_reaction/slime/slimeuran/on_reaction(datum/reagents/holder)
+	var/turf/location = get_turf(holder.my_atom)
+	new /obj/item/stack/sheet/mineral/uranium(location, 5)
+	..()
+
 //Metal
 /datum/chemical_reaction/slime/slimemetal
 	name = "Slime Metal"
@@ -130,6 +145,18 @@
 	T.visible_message("<span class='danger'>The slime extract begins to vibrate adorably!</span>")
 	addtimer(CALLBACK(src, .proc/chemical_mob_spawn, holder, 1, "Friendly Gold Slime", "neutral"), 50)
 
+/datum/chemical_reaction/slime/slimegold
+	name = "Slime Gold"
+	id = "m_gold"
+	required_reagents = list("mutagen" = 1)
+	required_container = /obj/item/slime_extract/gold
+	required_other = 1
+
+/datum/chemical_reaction/slime/slimegold/on_reaction(datum/reagents/holder)
+	var/turf/location = get_turf(holder.my_atom)
+	new /obj/item/stack/sheet/mineral/gold (location, 5)
+	..()
+
 //Silver
 /datum/chemical_reaction/slime/slimebork
 	name = "Slime Bork"
@@ -192,6 +219,18 @@
 
 /datum/chemical_reaction/slime/slimebork/drinks/getborks()
 	return subtypesof(/obj/item/reagent_containers/food/drinks)
+
+/datum/chemical_reaction/slime/slimesilver
+	name = "Slime Silver"
+	id = "m_silver"
+	required_reagents = list("mutagen" = 1)
+	required_container = /obj/item/slime_extract/silver
+	required_other = 1
+
+/datum/chemical_reaction/slime/slimesilver/on_reaction(datum/reagents/holder)
+	var/turf/location = get_turf(holder.my_atom)
+	new /obj/item/stack/sheet/mineral/silver(location, 5)
+	..()
 
 //Blue
 /datum/chemical_reaction/slime/slimefrost
@@ -362,7 +401,7 @@
 	required_other = 1
 
 /datum/chemical_reaction/slime/slimeplasma/on_reaction(datum/reagents/holder)
-	new /obj/item/stack/sheet/mineral/plasma(get_turf(holder.my_atom), 3)
+	new /obj/item/stack/sheet/mineral/plasma(get_turf(holder.my_atom), 5)
 	..()
 
 //Red
@@ -496,6 +535,18 @@
 	new /obj/item/stack/sheet/mineral/adamantine(get_turf(holder.my_atom))
 	..()
 
+/datum/chemical_reaction/slime/slimetitanium
+	name = "Slime Titanium"
+	id = "m_titanium"
+	required_reagents = list("mutagen" = 1)
+	required_container = /obj/item/slime_extract/adamantine
+	required_other = 1
+
+/datum/chemical_reaction/slime/slimetitanium/on_reaction(datum/reagents/holder)
+	new /obj/item/stack/sheet/mineral/titanium(get_turf(holder.my_atom), 5)
+	..()
+
+
 //Bluespace
 /datum/chemical_reaction/slime/slimefloor2
 	name = "Bluespace Floor"
@@ -618,6 +669,17 @@
 /datum/chemical_reaction/slime/slimeRNG/on_reaction(datum/reagents/holder)
 	var/mob/living/simple_animal/slime/random/S = new (get_turf(holder.my_atom))
 	S.visible_message("<span class='danger'>Infused with plasma, the core begins to quiver and grow, and a new baby slime emerges from it!</span>")
+	..()
+
+/datum/chemical_reaction/slime/slimediamond
+	name = "Slime Diamond"
+	id = "m_diamond"
+	required_reagents = list("mutagen" = 1)
+	required_container = /obj/item/slime_extract/rainbow
+	required_other = 1
+
+/datum/chemical_reaction/slime/slimediamond/on_reaction(datum/reagents/holder)
+	new /obj/item/stack/sheet/mineral/diamond(get_turf(holder.my_atom), 5)
 	..()
 
 /datum/chemical_reaction/slime/slime_transfer
