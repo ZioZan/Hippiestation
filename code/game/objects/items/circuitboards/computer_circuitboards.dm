@@ -93,6 +93,11 @@
 	build_path = /obj/machinery/computer/teleporter
 	origin_tech = "programming=3;bluespace=3;plasmatech=3"
 
+/obj/item/circuitboard/computer/telesci_console
+	name = "Telepad Control Console (Computer Board)"
+	build_path = /obj/machinery/computer/telescience
+	origin_tech = "programming=4;bluespace=4;plasmatech=2"
+
 /obj/item/circuitboard/computer/secure_data
 	name = "Security Records Console (Computer Board)"
 	build_path = /obj/machinery/computer/secure_data

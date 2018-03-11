@@ -124,6 +124,17 @@
 		/obj/item/stock_parts/capacitor = 1,
 		/obj/item/stack/cable_coil = 3)
 
+/obj/item/circuitboard/machine/telesci_pad
+	name = "Telepad (Machine Board)"
+	build_path = /obj/machinery/telepad
+	origin_tech = "programming=4;engineering=3;materials=3;bluespace=4"
+	req_components = list(
+							/obj/item/ore/bluespace_crystal = 2,
+							/obj/item/stock_parts/capacitor = 1,
+							/obj/item/stack/cable_coil = 1,
+							/obj/item/stock_parts/console_screen = 1)
+	def_components = list(/obj/item/ore/bluespace_crystal = /obj/item/ore/bluespace_crystal/artificial)
+
 /obj/item/circuitboard/machine/telecomms/broadcaster
 	name = "Subspace Broadcaster (Machine Board)"
 	build_path = /obj/machinery/telecomms/broadcaster
