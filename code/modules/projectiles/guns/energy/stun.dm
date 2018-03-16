@@ -7,6 +7,15 @@
 	origin_tech = "combat=3"
 	ammo_x_offset = 3
 
+/obj/item/gun/energy/stunrevolver
+	name = "Stun revolver"
+	desc = "A high-tech revolver that fires internal, reusable taser cartridges in a revolving cylinder. The cartridges can be recharged using conventional rechargers."
+	icon_state = "stunrevolver"
+	item_state = "advtaser"
+	ammo_type = list(/obj/item/ammo_casing/energy/electrode)
+	can_flashlight = 0
+	pin = null
+
 /obj/item/gun/energy/tesla_revolver
 	name = "tesla gun"
 	desc = "An experimental gun based on an experimental engine, it's about as likely to kill its operator as it is the target."

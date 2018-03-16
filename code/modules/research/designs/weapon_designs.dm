@@ -52,14 +52,34 @@
 	build_path = /obj/item/shield/riot/tele
 	category = list("Weapons")
 
+/datum/design/lasercannon
+	name = "Laser Cannon"
+	desc = "With the L.A.S.E.R. cannon, the lasing medium is enclosed in a tube lined with uranium-235 and subjected to high neutron flux in a nuclear reactor core. This incredible technology may help YOU achieve high excitation rates with small laser volumes!"
+	id = "lasercannon"
+	req_tech = list("combat" = 6, "magnets" = 3, "powerstorage" = 3)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 8000, MAT_GLASS = 2000, MAT_DIAMOND = 2000)
+	build_path = /obj/item/gun/energy/lasercannon
+	category = list("Weapons")
+
 /datum/design/beamrifle
 	name = "Beam Marksman Rifle"
 	desc = "A powerful long ranged anti-material rifle that fires charged particle beams to obliterate targets."
 	id = "beamrifle"
-	req_tech = list("combat" = 7, "magnets" = 5, "powerstorage" = 5, "materials" = 7, "programming" = 5)
+	req_tech = list("combat" = 5, "magnets" = 5, "powerstorage" = 5, "materials" = 7, "programming" = 5)
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 10000, MAT_GLASS = 5000, MAT_DIAMOND = 5000, MAT_URANIUM = 8000, MAT_SILVER = 4500, MAT_GOLD = 5000)
+	materials = list(MAT_METAL = 8000, MAT_GLASS = 2000, MAT_DIAMOND = 2000, MAT_URANIUM = 2000, MAT_SILVER = 6000, MAT_GOLD = 6000)
 	build_path = /obj/item/gun/energy/beam_rifle
+	category = list("Weapons")
+
+/datum/design/accellasercannon
+	name = "Accelerator Laser Cannon"
+	desc = "A heavy duty laser cannon. It does more damage the farther away the target is."
+	id = "accellasercannon"
+	req_tech = list("combat" = 5, "magnets" = 3, "powerstorage" = 3)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 8000, MAT_GLASS = 2000, MAT_DIAMOND = 2000)
+	build_path = /obj/item/gun/energy/accellasercannon
 	category = list("Weapons")
 
 /datum/design/decloner
@@ -138,7 +158,7 @@
 	name = "Xray Laser Gun"
 	desc = "Not quite as menacing as it sounds"
 	id = "xray"
-	req_tech = list("combat" = 7, "magnets" = 5, "biotech" = 5, "powerstorage" = 4)
+	req_tech = list("combat" = 6, "magnets" = 5, "biotech" = 5, "powerstorage" = 4)
 	build_type = PROTOLATHE
 	materials = list(MAT_GOLD = 5000, MAT_URANIUM = 4000, MAT_METAL = 5000, MAT_TITANIUM = 2000, MAT_BLUESPACE = 2000)
 	build_path = /obj/item/gun/energy/xray
