@@ -327,3 +327,36 @@ Bonus
 	M.dna.remove_mutation_group(unclean_mutations)
 	M.radiation = max(M.radiation - (2 * amt_healed), 0)
 	return 1
+
+
+/*
+//////////////////////////////////////
+Hemoglobic Acceleration
+	Low hidden boost.
+	Medium resistance penalty.
+	Low stage speed penalty.
+	Low transmittablity penalty.
+	Medium Level.
+Bonus
+	Heals bloodloss.
+//////////////////////////////////////
+*/
+
+/datum/symptom/heal/bloodregen
+
+	name = "Hemoglobic Acceleration"
+	stealth = 1
+	resistance = -2
+	stage_speed = -1
+	transmittable = -1
+	level = 3
+
+/datum/symptom/heal/bloodregen/Heal(var/mob/living/carbon/human/M, var/datum/disease/advance/A)
+	switch(A.stage)
+		if(4,5)
+			if (M.blood_volume < BLOOD_VOLUME_NORMAL)
+				M.blood_volume += 5
+		else
+			if (M.blood_volume < BLOOD_VOLUME_NORMAL)
+				M.blood_volume += 2.5
+	return 1

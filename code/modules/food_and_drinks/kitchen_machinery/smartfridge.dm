@@ -402,12 +402,12 @@
 /obj/machinery/smartfridge/chemistry/virology/preloaded
 	initial_contents = list(
 		/obj/item/reagent_containers/syringe/antiviral = 4,
-		/obj/item/reagent_containers/glass/bottle/cold = 1,
-		/obj/item/reagent_containers/glass/bottle/flu_virion = 1,
-		/obj/item/reagent_containers/glass/bottle/mutagen = 1,
-		/obj/item/reagent_containers/glass/bottle/plasma = 1,
-		/obj/item/reagent_containers/glass/bottle/synaptizine = 1,
-		/obj/item/reagent_containers/glass/bottle/formaldehyde = 1)
+		/obj/item/reagent_containers/glass/bottle/cold = 2,
+		/obj/item/reagent_containers/glass/bottle/flu_virion = 2,
+		/obj/item/reagent_containers/glass/bottle/mutagen = 4,
+		/obj/item/reagent_containers/glass/bottle/plasma = 4,
+		/obj/item/reagent_containers/glass/bottle/synaptizine = 4,
+		/obj/item/reagent_containers/glass/bottle/formaldehyde = 4)
 
 // ----------------------------
 // Disk """fridge"""
