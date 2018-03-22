@@ -82,6 +82,16 @@
 	build_path = /obj/item/gun/energy/accellasercannon
 	category = list("Weapons")
 
+/datum/design/wt550
+	name = "NanoTrasen WT-550 Auto Rifle"
+	desc = "Old WT-550 auto rifle, used to deal with enemies protected from energy weapons."
+	id = "wt550"
+	req_tech = list("combat" = 4, "materials" = 3)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 8000, MAT_GLASS = 2000, MAT_SILVER = 1000, MAT_GOLD = 1000, MAT_URANIUM = 1000)
+	build_path = /obj/item/gun/ballistic/automatic/wt550/sci
+	category = list("Weapons")
+
 /datum/design/decloner
 	name = "Decloner"
 	desc = "Your opponent will bubble into a messy pile of goop."
