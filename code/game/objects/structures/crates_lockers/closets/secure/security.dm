@@ -235,6 +235,11 @@
 	name = "Contraband Locker"
 	req_access = list(ACCESS_ARMORY)
 
+/obj/structure/closet/secure_closet/contraband/armory/PopulateContents()
+	..()
+	new /obj/item/gun/ballistic/shotgun/automatic/combat(src)
+	new /obj/item/gun/ballistic/automatic/pistol/APS(src)
+
 /obj/structure/closet/secure_closet/contraband/heads
 	anchored = TRUE
 	name = "Contraband Locker"
