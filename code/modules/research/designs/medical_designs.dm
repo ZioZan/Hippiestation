@@ -185,6 +185,16 @@
 	materials = list(MAT_METAL = 2000, MAT_SILVER = 1500, MAT_PLASMA = 500, MAT_TITANIUM = 1500)
 	category = list("Medical Designs")
 
+/datum/design/medbeam_gun
+	name = "Medical healing gun"
+	desc = "A cutting edge healing gun. It heals your target, instead of killing it."
+	id = "medbeam_gun"
+	req_tech = list("materials" = 7, "biotech" = 6, "magnets" = 6, "engineering" = 6, "combat" = 6, "powerstorage" = 6, "bluespace" = 6, "programming"=6, "syndicate" = 6)
+	build_path = /obj/item/gun/medbeam
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 6000, MAT_GLASS = 4000, MAT_SILVER = 4000, MAT_GOLD = 4000, MAT_URANIUM = 4000, MAT_DIAMOND = 4000, MAT_TITANIUM = 4000)
+	category = list("Medical Designs")
+
 /////////////////////////////////////////
 //////////Cybernetic Implants////////////
 /////////////////////////////////////////
