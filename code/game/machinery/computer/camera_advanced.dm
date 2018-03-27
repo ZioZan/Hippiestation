@@ -10,6 +10,7 @@
 	var/list/networks = list("SS13")
 	var/datum/action/innate/camera_off/off_action = new
 	var/datum/action/innate/camera_jump/jump_action = new
+	circuit = /obj/item/circuitboard/computer/advanced_security
 	var/list/actions = list()
 
 	light_color = LIGHT_COLOR_RED

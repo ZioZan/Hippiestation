@@ -28,6 +28,15 @@
 	build_path = /obj/item/circuitboard/computer/security
 	category = list("Computer Boards")
 
+/datum/design/board/seccamera_advanced
+	name = "Computer Design (Advanced security camera console)"
+	desc = "Allows for the construction of circuit boards used to build advanced security camera computers."
+	id = "camera_advanced"
+	req_tech = list("programming" = 6, "combat" = 6, "magnets" = 7, "engineering" = 6)
+	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
+	build_path = /obj/item/circuitboard/computer/advanced_security
+	category = list("Computer Boards")
+
 /datum/design/board/xenobiocamera
 	name = "Computer Design (Xenobiology Console)"
 	desc = "Allows for the construction of circuit boards used to build xenobiology camera computers."

@@ -18,6 +18,11 @@
 	build_path = /obj/machinery/computer/security
 	origin_tech = "programming=2;combat=2"
 
+/obj/item/circuitboard/computer/advanced_security
+	name = "Advanced security cameras (Computer Board)"
+	build_path = /obj/machinery/computer/camera_advanced
+	origin_tech = "programming=5;combat=5;engineering=5"
+
 /obj/item/circuitboard/computer/xenobiology
 	name = "circuit board (Xenobiology Console)"
 	build_path = /obj/machinery/computer/camera_advanced/xenobio
