@@ -1276,9 +1276,9 @@
 					 list("desc"="You shouldn't be able to see this."),
 
 					 //1
-					 list("key"=/obj/item/device/assembly/signaler/anomaly,
-						 "backkey"=null, //Cannot remove the anomaly core once it's in
-						 "desc"="Anomaly core socket is open and awaiting connection."),
+					 list("key"=/obj/item/stock_parts/micro_laser/ultra,
+						 "backkey"=null, //Cannot remove the microlaser core once it's in
+						 "desc"="Ultra microlaser socket is open and awaiting connection."),
 					 //2
 					 list("key"=/obj/item/weldingtool,
 							"backkey"=/obj/item/wrench,
@@ -1588,7 +1588,7 @@
 				holder.icon_state = "phazon23"
 		if(2)
 			if(diff==FORWARD)
-				user.visible_message("[user] carefully inserts the anomaly core into \the [holder] and secures it.", "<span class='notice'>You slowly place the anomaly core into its socket and close its chamber.</span>")
+				user.visible_message("[user] carefully inserts the ultra microlaser into \the [holder] and secures it.", "<span class='notice'>You slowly place the ultra microlaser into its socket and close its chamber.</span>")
 				qdel(used_atom)
 				spawn_mecha_result()
 	return TRUE
