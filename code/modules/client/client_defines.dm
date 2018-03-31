@@ -35,6 +35,11 @@
 	// comment out the line below when debugging locally to enable the options & messages menu
 	control_freak = 1
 
+		///////////////////
+		//Anonimity Stuff//
+		///////////////////
+	var player_anonyname = 0
+
 		////////////////////////////////////
 		//things that require the database//
 		////////////////////////////////////

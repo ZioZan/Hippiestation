@@ -342,6 +342,14 @@ GLOBAL_LIST(external_rsc_urls)
 		else
 			winset(src, "infowindow.changelog", "font-style=bold")
 
+	if(holder)
+		for(var/client/C in GLOB.admins)
+			if(check_rights_for(src, R_ADMIN))
+				player_anonyname = "Admin ([rand(1, 1000)])"
+	else
+		player_anonyname = "Player ([rand(1, 1000)])"
+
+
 	if(ckey in GLOB.clientmessages)
 		for(var/message in GLOB.clientmessages[ckey])
 			to_chat(src, message)
