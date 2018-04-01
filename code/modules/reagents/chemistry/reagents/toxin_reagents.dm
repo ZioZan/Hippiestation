@@ -56,6 +56,7 @@
 /datum/reagent/toxin/plasma
 	name = "Plasma"
 	id = "plasma"
+	can_synth = 0
 	description = "Plasma in its liquid form."
 	taste_description = "bitterness"
 	taste_mult = 1.5
@@ -91,6 +92,7 @@
 /datum/reagent/toxin/lexorin
 	name = "Lexorin"
 	id = "lexorin"
+	can_synth = 2
 	description = "A powerful poison used to stop respiration."
 	color = "#7DC3A0"
 	toxpwr = 0
@@ -135,6 +137,7 @@
 /datum/reagent/toxin/minttoxin
 	name = "Mint Toxin"
 	id = "minttoxin"
+	can_synth = 0
 	description = "Useful for dealing with undesirable customers."
 	color = "#CF3600" // rgb: 207, 54, 0
 	toxpwr = 0
@@ -368,6 +371,7 @@
 	id = "polonium"
 	description = "An extremely radioactive material in liquid form. Ingestion results in fatal irradiation."
 	reagent_state = LIQUID
+	can_synth = 2
 	color = "#787878"
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	toxpwr = 0
@@ -379,6 +383,7 @@
 /datum/reagent/toxin/histamine
 	name = "Histamine"
 	id = "histamine"
+	can_synth = 2
 	description = "Histamine's effects become more dangerous depending on the dosage amount. They range from mildly annoying to incredibly lethal."
 	reagent_state = LIQUID
 	color = "#FA6464"
@@ -527,6 +532,7 @@
 /datum/reagent/toxin/initropidril
 	name = "Initropidril"
 	id = "initropidril"
+	can_synth = 2
 	description = "A powerful poison with insidious effects. It can cause stuns, lethal breathing failure, and cardiac arrest."
 	reagent_state = LIQUID
 	color = "#7F10C0"
@@ -560,6 +566,7 @@
 /datum/reagent/toxin/pancuronium
 	name = "Pancuronium"
 	id = "pancuronium"
+	can_synth = 2
 	description = "An undetectable toxin that swiftly incapacitates its victim. May also cause breathing failure."
 	reagent_state = LIQUID
 	color = "#195096"
@@ -594,6 +601,7 @@
 /datum/reagent/toxin/sulfonal
 	name = "Sulfonal"
 	id = "sulfonal"
+	can_synth = 2
 	description = "A stealthy poison that deals minor toxin damage and eventually puts the target to sleep."
 	reagent_state = LIQUID
 	color = "#7DC3A0"
@@ -640,6 +648,7 @@
 /datum/reagent/toxin/coniine
 	name = "Coniine"
 	id = "coniine"
+	can_synth = 2
 	description = "Coniine metabolizes extremely slowly, but deals high amounts of toxin damage and stops breathing."
 	reagent_state = LIQUID
 	color = "#7DC3A0"
@@ -681,6 +690,7 @@
 /datum/reagent/toxin/curare
 	name = "Curare"
 	id = "curare"
+	can_synth = 2
 	description = "Causes slight toxin damage followed by chain-stunning and oxygen damage."
 	reagent_state = LIQUID
 	color = "#191919"

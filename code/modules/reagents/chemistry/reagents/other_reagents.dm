@@ -851,6 +851,7 @@
 /datum/reagent/uranium
 	name ="Uranium"
 	id = "uranium"
+	can_synth = 0
 	description = "A silvery-white metallic chemical element in the actinide series, weakly radioactive."
 	reagent_state = SOLID
 	color = "#B8B8C0" // rgb: 184, 184, 192
