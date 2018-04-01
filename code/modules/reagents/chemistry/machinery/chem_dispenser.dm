@@ -372,7 +372,6 @@
 	amount = 30
 	recharged = 0
 	recharge_delay = 5
-	dispensable_reagent_tiers = list(list(),list(),list(),list())
 
 
 /obj/machinery/chem_dispenser/constructable/synth/Initialize()
